@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息图：光化学范式要回答的关键问题</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .reaction-pathway { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; text-align: center; }
+        .reaction-pathway h2 { color: var(--accent-color-1); font-size: 1.5em; margin: 0 0 1rem 0; border: none; padding: 0;}
+        .path-flow { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 1.8em; font-weight: 700; }
+        .path-step { color: var(--accent-color-2); }
+        .path-arrow { color: var(--accent-color-1); }
+        .questions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; }
+        .question-card { background: rgba(0,0,0,0.2); border-radius: 10px; padding: 1.5rem; display: flex; align-items: flex-start; }
+        .question-number { font-size: 2.5em; font-weight: 700; color: var(--accent-color-1); margin-right: 1.5rem; line-height: 1; }
+        .question-content p { margin: 0; font-size: 1.05em; line-height: 1.7; }
+        .question-content strong { color: var(--accent-color-2); }
+        .solution-box { margin-top: 2.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(3, 169, 244, 0.1), rgba(255, 193, 7, 0.1)); border-radius: 12px; text-align: center; }
+        .solution-box h3 { color: var(--header-color); font-size: 1.6em; border: none; padding: 0; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header"><h1>1.9 光化学范式需解答的关键问题</h1></header>
+
+        <section class="infographic-section">
+            <div class="reaction-pathway">
+                <h2>核心研究路径: R + hν → P</h2>
+                <div class="path-flow">
+                    <span class="path-step">R + hν</span>
+                    <span class="path-arrow">→</span>
+                    <span class="path-step">*R</span>
+                    <span class="path-arrow">→</span>
+                    <span class="path-step">I</span>
+                    <span class="path-arrow">→</span>
+                    <span class="path-step">P</span>
+                </div>
+            </div>
+
+            <main class="questions-grid">
+                <div class="question-card">
+                    <div class="question-number">1</div>
+                    <div class="question-content"><p>如何<strong>可视化</strong>光子-R相互作用？它如何关联到<strong>实验量</strong>（消光系数, 辐射寿命等）？</p></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number">2</div>
+                    <div class="question-content"><p>在 <strong>\*R → P</strong> 路径中，\*R 和 I 有哪些<strong>可能/合理的结构、能量学和动力学</strong>？</p></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number">3</div>
+                    <div class="question-content"><p>对应于 <strong>\*R → I</strong> 过程的<strong>可能/合理的初级光化学过程</strong>有哪些？</p></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number">4</div>
+                    <div class="question-content"><p>有哪些合法的<strong>理论、实验和计算策略</strong>来观察或验证 \*R 和 I 的存在？</p></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number">5</div>
+                    <div class="question-content"><p>从 <strong>\*R → I</strong> 的<strong>最概然路径</strong>是什么？</p></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number">6</div>
+                    <div class="question-content"><p>如何由\*R的<strong>竞争动力学路径</strong>（光物理 vs 光化学）决定最概然的路径？</p></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number">7</div>
+                    <div class="question-content"><p>沿 <strong>\*R → P</strong> 路径的每个基元步骤的<strong>绝对速率（速率常数）</strong>是多少？</p></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number">8</div>
+                    <div class="question-content"><p>在典型光反应中，什么样的<strong>结构、能量学和动力学</strong>对应于\*R和I？</p></div>
+                </div>
+            </main>
+            
+            <div class="solution-box">
+                <h3>🔑 如何回答这些问题？</h3>
+                <p>这些问题以及更多隐含的问题，可以通过建立一个更详细的<strong>工作范式 (working paradigm)</strong>，并参考那些可作为光化学反应分析基准的<strong>范例 (exemplars)</strong> 来处理。</p>
+            </div>
+        </section>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

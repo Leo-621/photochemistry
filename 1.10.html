@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息图：从全局到工作范式 - 分子有机光化学的核心</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        h3 { color: var(--accent-color-1); }
+        .orbital-diagram-container { display: flex; justify-content: space-around; align-items: flex-end; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px; margin-top: 1.5rem; flex-wrap: wrap; }
+        .species-block { text-align: center; margin: 1rem; }
+        .species-label { font-size: 1.5em; font-weight: 700; margin-bottom: 15px; color: var(--header-color); }
+        .arrow { font-size: 2em; color: var(--accent-color-1); align-self: center; }
+        .orbital-set { position: relative; margin-bottom: 10px; }
+        .orbital-label { position: absolute; left: -35px; top: 50%; transform: translateY(-50%); color: var(--text-color); }
+        .orbital { width: 50px; height: 4px; background-color: var(--text-color); margin: 25px auto; position: relative; }
+        .electron { position: absolute; left: 50%; bottom: 8px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; }
+        .up { border-bottom: 12px solid var(--accent-color-2); transform: translateX(-100%); }
+        .down { border-top: 12px solid var(--accent-color-2); transform: translateX(0%); bottom: 6px; }
+        .single-up { transform: translateX(-50%); }
+        .config-label { font-family: monospace; color: var(--accent-color-1); margin-top: 10px; }
+        .question-list { list-style: decimal; padding-left: 20px; }
+        .question-list li { margin-bottom: 1rem; }
+        .pathway-advanced { font-family: monospace; font-size: 1.2em; text-align: center; padding: 1.5rem; border-radius: 8px; background: rgba(0,0,0,0.3); }
+        .singlet { color: var(--accent-color-1); }
+        .triplet { color: #F87171; }
+        .isc { color: var(--accent-color-2); font-style: italic; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header"><h1>从全局到工作范式：光化学的核心</h1></header>
+
+        <section class="infographic-section">
+            <h2><span style="font-size: 1.2em; margin-right: 10px;">🔬</span>1. 为什么要建立“日常工作范式”？</h2>
+            <p>为了高效地解决科学问题（类似“奥卡姆剃刀”），我们需要一个基于经验和先例的简化模型，从而避免每次都从头分析所有可能性。工作范式的核心是将注意力集中在两个关键轨道上：<strong>最高占据分子轨道 (HOMO/HO)</strong> 和 <strong>最低未占分子轨道 (LUMO/LU)</strong>。</p>
+        </section>
+
+        <section class="infographic-section">
+            <h2><span style="font-size: 1.2em; margin-right: 10px;">🎯</span>2. 核心工作范式 (Scheme 1.2)</h2>
+            <p>这是分析光化学反应R→P的起点，展示了关键物种的电子构型。</p>
+            <div class="orbital-diagram-container">
+                <div class="species-block">
+                    <div class="species-label">R</div>
+                    <div class="orbital-set">
+                        <div class="orbital-label">LU</div><div class="orbital"></div>
+                        <div class="orbital-label">HO</div><div class="orbital"><span class="electron up"></span><span class="electron down"></span></div>
+                    </div>
+                    <div class="config-label">(HO)²</div>
+                </div>
+                <div class="arrow">→ <span style="font-size: 0.6em; display: block;">hν</span></div>
+                <div class="species-block">
+                    <div class="species-label">*R</div>
+                    <div class="orbital-set">
+                         <div class="orbital-label">LU</div><div class="orbital"><span class="electron up single-up"></span></div>
+                        <div class="orbital-label">HO</div><div class="orbital"><span class="electron up single-up"></span></div>
+                    </div>
+                    <div class="config-label">(HO)¹(LU)¹</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="species-block">
+                    <div class="species-label">I</div>
+                    <div class="orbital-set">
+                        <div class="orbital-label">NB₂</div><div class="orbital"><span class="electron up single-up"></span></div>
+                        <div class="orbital-label">NB₁</div><div class="orbital"><span class="electron up single-up"></span></div>
+                    </div>
+                    <div class="config-label">(NB₁)¹(NB₂)¹</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="species-block">
+                    <div class="species-label">P</div>
+                    <div class="orbital-set">
+                        <div class="orbital-label">LU</div><div class="orbital"></div>
+                        <div class="orbital-label">HO</div><div class="orbital"><span class="electron up"></span><span class="electron down"></span></div>
+                    </div>
+                    <div class="config-label">(HO)²</div>
+                </div>
+            </div>
+            <h3>关于中间体 I (Diradicaloid)</h3>
+            <p>中间体 I 通常被称为 <strong>Diradicaloid (类双自由基)</strong>。在本文的简化模型中，它被视为一个 <strong>Biradical (双自由基)</strong>，即两个电子分别占据两个能量相近的非键轨道 (NB)。(注：为简化问题，暂不考虑两个电子占据同一个NB轨道的两性离子情况)。</p>
+        </section>
+
+        <section class="infographic-section">
+            <h2><span style="font-size: 1.2em; margin-right: 10px;">❓</span>3. 工作范式引发的新问题</h2>
+            <p>该简化模型（Scheme 1.2）引出了一系列需要解答的关键问题：</p>
+            <ol class="question-list">
+                <li>在 R + hν → *R 过程中，HO 和 LU 的电子特性是什么？</li>
+                <li>*R 的电子构型 (即 HO 和 LU 的轨道占据情况) 是什么？</li>
+                <li>基于 *R 的电子构型，其可能的合理光物理和光化学过程是什么？</li>
+                <li>中间体 I 的非键轨道 (NB) 的电子特性是什么？</li>
+                <li>能最终生成产物 P 的中间体 I 的合理热反应是什么？</li>
+            </ol>
+        </section>
+
+        <section class="infographic-section">
+            <h2><span style="font-size: 1.2em; margin-right: 10px;">🌀</span>4. 引入自旋态：更精细的范式 (Scheme 1.3)</h2>
+            <p>为了更深入地描述反应，我们需要考虑电子的自旋状态。这引入了单线态(Singlet)、三线态(Triplet)以及它们之间的转化——<strong>系间窜越 (Intersystem Crossing / ISC)</strong>。</p>
+            <h3>一个经过三线态的范例反应路径:</h3>
+            <div class="pathway-advanced">
+                R(S₀) + hν → <span class="singlet">¹R(S₁)</span> → <span class="isc">[ISC]</span> → <span class="triplet">³R(T₁)</span> → <span class="triplet">³I(D)</span> → <span class="isc">[ISC]</span> → <span class="singlet">¹I(D)</span> → P(S₀)
+            </div>
+        </section>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

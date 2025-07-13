@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息图：态能图 (Jablonski图) - 光化学过程全景</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container { max-width: 1400px; }
+        .main-layout { display: grid; grid-template-columns: 250px 1fr 250px; gap: 1.5rem; align-items: center; }
+        .legend-panel { display: flex; flex-direction: column; gap: 1rem; }
+        .legend-card { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.5rem; }
+        .legend-card h3 { margin: 0 0 1rem 0; font-size: 1.2em; display: flex; align-items: center; border: none; padding: 0; }
+        .legend-card ul { list-style: none; padding: 0; margin: 0; }
+        .legend-card li { margin-bottom: 8px; font-size: 0.9em; }
+        .jablonski-container { position: relative; height: 600px; background: rgba(0,0,0,0.2); border-radius: 20px; }
+        .energy-level { position: absolute; left: 15%; width: 70%; height: 5px; background-color: var(--accent-color-1); }
+        .state-label { position: absolute; left: 5px; font-size: 1.5em; font-weight: bold; font-family: 'Fira Code', monospace; }
+        #s0-level { bottom: 50px; }
+        #s1-level { bottom: 450px; left: 10%; width: 35%; }
+        #t1-level { bottom: 350px; left: 55%; width: 35%; }
+        #s0-label { bottom: 40px; } #s1-label { bottom: 440px; } #t1-label { bottom: 340px; left: 53%; }
+        .orbital-config { position: absolute; font-family: 'Fira Code', monospace; text-align: center; font-size: 0.8em; }
+        #s0-config { bottom: 80px; left: 18%; } #s1-config { top: 70px; left: 13%; } #t1-config { top: 170px; left: 88%; }
+        .jablonski-container svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: visible; }
+        .arrow { stroke-width: 2; fill: none; }
+        .wavy-arrow { stroke-dasharray: 6 6; }
+        .process-label { font-family: 'Fira Code', monospace; font-size: 12px; }
+        .process-number { font-size: 14px; font-weight: bold; fill: #fff; }
+        .bottom-panel { grid-column: 1 / -1; margin-top: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>态能图 (Jablonski图)：光化学过程全景</h1>
+            <p>一个紧凑的工作范例，用于展示和追踪有机分子在吸收光子后经历的各种光物理和光化学过程。</p>
+        </header>
+
+        <div class="main-layout">
+            <div class="legend-panel">
+                <div class="legend-card">
+                    <h3 style="color: #FBBF24;">☀️ 光物理-辐射过程</h3>
+                    <ul>
+                        <li><strong>1. 吸收 (S₀→S₁):</strong> 吸收光子，自旋允许。</li>
+                        <li><strong>3. 荧光 (S₁→S₀):</strong> 发射光子，自旋允许。</li>
+                        <li><strong>4. 磷光 (T₁→S₀):</strong> 发射光子，自旋禁阻。</li>
+                    </ul>
+                </div>
+                 <div class="legend-card">
+                    <h3>🧬 物种异构关系</h3>
+                    <ul>
+                        <li><strong>电子异构体:</strong> S₀ vs S₁, 电子构型不同。</li>
+                        <li><strong>自旋异构体:</strong> S₁ vs T₁, 自旋构型不同。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="jablonski-container">
+                <div class="energy-level" id="s0-level"></div>
+                <div class="energy-level" id="s1-level"></div>
+                <div class="energy-level" id="t1-level"></div>
+                <div class="state-label" id="s0-label">S₀</div>
+                <div class="state-label" id="s1-label">S₁</div>
+                <div class="state-label" id="t1-label">T₁</div>
+                <div class="orbital-config" id="s0-config">LU <u>&nbsp;&nbsp;&nbsp;&nbsp;</u><br>HO <u>↑↓</u></div>
+                <div class="orbital-config" id="s1-config">LU <u>&nbsp;↑&nbsp;&nbsp;</u><br>HO <u>&nbsp;↑&nbsp;&nbsp;</u></div>
+                <div class="orbital-config" id="t1-config">LU <u>&nbsp;↑&nbsp;&nbsp;</u><br>HO <u>&nbsp;↑&nbsp;&nbsp;</u></div>
+                <svg>
+                    <defs>
+                        <marker id="arrow-rad" markerWidth="5" markerHeight="3.5" refX="5" refY="1.75" orient="auto"><polygon points="0 0, 5 1.75, 0 3.5" fill="#FBBF24"/></marker>
+                        <marker id="arrow-nonrad" markerWidth="5" markerHeight="3.5" refX="5" refY="1.75" orient="auto"><polygon points="0 0, 5 1.75, 0 3.5" fill="#A78BFA"/></marker>
+                        <marker id="arrow-photo" markerWidth="5" markerHeight="3.5" refX="5" refY="1.75" orient="auto"><polygon points="0 0, 5 1.75, 0 3.5" fill="#6EE7B7"/></marker>
+                    </defs>
+                    <line class="arrow" x1="25%" y1="550" x2="25%" y2="155" stroke="#FBBF24" marker-end="url(#arrow-rad)" /><text class="process-label" x="26%" y="350" fill="#FBBF24">吸收(hν)</text><text class="process-number" x="22%" y="350">1</text>
+                    <line class="arrow" x1="30%" y1="155" x2="30%" y2="550" stroke="#FBBF24" marker-end="url(#arrow-rad)" /><text class="process-label" x="31%" y="350" fill="#FBBF24">荧光 k_F</text><text class="process-number" x="28%" y="350">3</text>
+                    <line class="arrow" x1="75%" y1="255" x2="75%" y2="550" stroke="#FBBF24" marker-end="url(#arrow-rad)" /><text class="process-label" x="76%" y="400" fill="#FBBF24">磷光 k_P</text><text class="process-number" x="72%" y="400">4</text>
+                    <path class="arrow wavy-arrow" d="M 380 155 Q 400 350 380 550" stroke="#A78BFA" marker-end="url(#arrow-nonrad)" /><text class="process-label" x="405" y="350" fill="#A78BFA">内转换 k_IC</text><text class="process-number" x="385" y="300">5</text>
+                    <path class="arrow wavy-arrow" d="M 350 155 Q 470 200 550 255" stroke="#A78BFA" marker-end="url(#arrow-nonrad)" /><text class="process-label" x="420" y="195" fill="#A78BFA">系间窜越 k_ST</text><text class="process-number" x="450" y="170">6</text>
+                    <path class="arrow wavy-arrow" d="M 650 255 Q 670 400 650 550" stroke="#A78BFA" marker-end="url(#arrow-nonrad)" /><text class="process-label" x="675" y="400" fill="#A78BFA">系间窜越 k_TS</text><text class="process-number" x="655" y="350">7</text>
+                    <path class="arrow" d="M 350 155 H 450" stroke="#6EE7B7" marker-end="url(#arrow-photo)" /><text class="process-label" x="370" y="145" fill="#6EE7B7">k_R^S → ¹I</text><text class="process-number" x="400" y="125">8</text>
+                    <path class="arrow" d="M 650 255 H 550" stroke="#6EE7B7" marker-end="url(#arrow-photo)" /><text class="process-label" x="570" y="245" fill="#6EE7B7">k_R^T → ³I</text><text class="process-number" x="600" y="225">9</text>
+                </svg>
+            </div>
+
+            <div class="legend-panel">
+                <div class="legend-card">
+                    <h3 style="color: #A78BFA;">♨️ 光物理-无辐射过程</h3>
+                    <ul>
+                        <li><strong>5. 内转换 (IC):</strong> S₁→S₀+热，自旋允许。</li>
+                        <li><strong>6. 系间窜越 (ISC):</strong> S₁→T₁，自旋禁阻。</li>
+                        <li><strong>7. 系间窜越 (ISC):</strong> T₁→S₀，自旋禁阻。</li>
+                    </ul>
+                </div>
+                 <div class="legend-card">
+                    <h3 style="color: #6EE7B7;">⚗️ 光化学过程</h3>
+                    <ul>
+                        <li><strong>8. S₁→¹I:</strong> 从S₁态生成单线态中间体。</li>
+                        <li><strong>9. T₁→³I:</strong> 从T₁态生成三线态中间体。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bottom-panel">
+                 <div class="legend-card">
+                    <h3><span style="font-size: 1.5em; margin-right: 10px;">🏆</span> 过程竞争与最终产物</h3>
+                    <p><strong>竞争:</strong> 激发态(S₁或T₁)的命运取决于所有可能的失活过程（荧光、IC、ISC、光化学反应等）的<strong>相对速率(k)</strong>。最快的过程将主导反应路径。</p>
+                    <p><strong>后续热反应:</strong> 中间体I到最终产物P的转化 (I→P) 是一个关键的<strong>热反应</strong>，它完成了整个光化学转化，但本身不属于光物理或光化学步骤。</p>
+                </div>
+                <div class="legend-card">
+                    <h3><span style="font-size: 1.5em; margin-right: 10px;">⚠️</span> 范式局限性</h3>
+                    <p>为了教学和理解的简洁性，当前的工作范式是<strong>不完整的</strong>。它省略了一些在真实体系中可能存在、但较为少见的路径（例如，经过锥形交叉点F的反应等），这些更复杂的情况将在后续章节中讨论。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

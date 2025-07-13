@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构筑量子直觉：通往光化学的可视化路径</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .bridge-diagram { display: flex; align-items: center; justify-content: space-around; gap: 1rem; margin: 3rem 0; flex-wrap: wrap; }
+        .world { text-align: center; padding: 1.5rem; }
+        .world .icon { font-size: 4rem; margin-bottom: 1rem; }
+        .world h2 { font-size: 1.5rem; color: var(--header-color); margin-bottom: 0.5rem; }
+        .world ul { list-style: none; padding: 0; margin: 0; color: var(--text-color); }
+        .bridge { text-align: center; }
+        .bridge-path { background: linear-gradient(90deg, #3498db, #9b59b6); height: 10px; border-radius: 5px; margin-bottom: 1.5rem; }
+        .bridge h3 { font-size: 1.3rem; color: var(--accent-color-1); }
+        .pillars { display: flex; justify-content: space-around; gap: 0.5rem; flex-wrap: wrap; }
+        .pillar { font-size: 0.9rem; background: var(--card-bg); padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid var(--border-color); }
+        .final-goal { text-align: center; margin-top: 3rem; border-top: 2px dashed var(--border-color); padding-top: 3rem; }
+        .final-goal h2 { font-size: 2rem; color: #8e44ad; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>构筑量子直觉</h1>
+            <p>为非专业者搭建一条通往光化学世界的“可视化”桥梁</p>
+        </header>
+
+        <section class="infographic-section">
+            <div class="bridge-diagram">
+                <div class="world" id="classical-world">
+                    <div class="icon">🏛️</div>
+                    <h2>经典化学世界</h2>
+                    <ul>
+                        <li>经典结构理论</li>
+                        <li>连续的能量态</li>
+                    </ul>
+                </div>
+
+                <div class="bridge">
+                    <h3>可视化表征之桥</h3>
+                    <div class="bridge-path"></div>
+                    <div class="pillars">
+                        <span class="pillar">光子</span>
+                        <span class="pillar">电子自旋</span>
+                        <span class="pillar">量子化态</span>
+                        <span class="pillar">相互作用波</span>
+                    </div>
+                </div>
+
+                <div class="world" id="quantum-world">
+                    <div class="icon">🌌</div>
+                    <h2>光化学量子世界</h2>
+                    <ul>
+                        <li>量子力学范式</li>
+                        <li>量子化的能量态</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="final-goal">
+                <h2><span class="icon" style="font-size: 2rem; vertical-align: middle;">🧠</span>最终目标：获得量子直觉</h2>
+                <p style="font-size: 1.1rem; max-width: 600px; margin: 1rem auto 0 auto;">
+                通过直观的图像和模型，无需复杂的数学推导，即可定性地理解和把握光化学反应的精髓。
+                </p>
+            </div>
+        </section>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

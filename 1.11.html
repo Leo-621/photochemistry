@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息图：光化学的核心范例 - Norrish反应</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .grid-2-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
+        .reaction-card { padding: 1.5rem; border-radius: 12px; background: rgba(0,0,0,0.3); }
+        .reaction-card h3 { font-size: 1.6em; margin: 0 0 1rem 0; border: none; padding: 0; }
+        #type1-card h3 { color: #34D399; }
+        #type2-card h3 { color: #F87171; }
+        .reaction-desc { font-size: 1.1em; margin-bottom: 1rem; }
+        #type1-card .reaction-desc strong { color: #34D399; }
+        #type2-card .reaction-desc strong { color: #F87171; }
+        .reaction-scheme { font-family: 'Fira Code', monospace; background-color: #111827; padding: 1.5rem; border-radius: 8px; font-size: 0.9em; white-space: pre-wrap; line-height: 1.8; }
+        .term-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .term-card { padding: 1.5rem; border-radius: 8px; background-color: rgba(0,0,0,0.2); }
+        .term-card h4 { margin: 0 0 10px 0; color: var(--accent-color-1); font-size: 1.2em; }
+        .term-card p { margin: 0; line-height: 1.6; }
+        .term-card code { font-family: 'Fira Code', monospace; color: var(--text-color); background: rgba(0,0,0,0.3); padding: 2px 5px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>光化学的核心范例：Norrish反应与自旋态</h1>
+            <p>通过具体的Norrish I型和II型反应范例，深入理解光化学反应中关键物种的精确符号及其物理意义。</p>
+        </header>
+
+        <section class="infographic-section">
+            <h2>范例聚焦：Norrish I型 & II型反应</h2>
+            <div class="grid-2-col">
+                <div class="reaction-card" id="type1-card">
+                    <h3>Norrish I型: α-断裂</h3>
+                    <p class="reaction-desc">光激发的酮发生羰基α位的C-C键均裂，生成一个<strong>自由基对 I(RP)</strong>。</p>
+                    <div class="reaction-scheme">
+  C₆H₅-C(=O)-C(CH₃)₂-C₆H₅  (R)
+      |
+      | hν
+      ↓
+  C₆H₅-C(O•)-C(CH₃)₂-C₆H₅  (*R)
+      |
+      | k_pp
+      ↓
+ [C₆H₅-C•=O •C(CH₃)₂-C₆H₅] (I(RP))
+      |
+      | k_sp
+      ↓
+ C₆H₅-CHO + CH₂=C(CH₃)-C₆H₅ (P₁)
+                    </div>
+                </div>
+                <div class="reaction-card" id="type2-card">
+                    <h3>Norrish II型: 分子内夺氢</h3>
+                    <p class="reaction-desc">光激发的酮从γ位碳上夺取一个氢原子，生成一个<strong>双自由基 I(BR)</strong>。</p>
+                    <div class="reaction-scheme">
+      O                    O•
+      ║                    |
+ C₆H₅-C-CH₂-CH₂-CH₃ (R) → C₆H₅-C-CH₂-CH₂-CH₃ (*R)
+      |
+      | k_pp
+      ↓
+     OH                    
+      |                    
+ C₆H₅-C•-CH₂-CH•-CH₃ (I(BR))
+      |
+      | k_sp
+      ↓
+ C₂H₄ + C₆H₅-C(OH)=CH₂ → P₁ + P₂
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="infographic-section">
+            <h2>解码符号：自旋态与中间体</h2>
+            <div class="term-grid">
+                 <div class="term-card">
+                    <h4>自旋态 (Spin State)</h4>
+                    <p><strong>单线态 (S):</strong> 电子自旋反平行配对 <code>(↑↓)</code>。</p>
+                    <p><strong>三线态 (T):</strong> 电子自旋平行未配对 <code>(↑↑)</code>。</p>
+                    <p>下标 <code>n</code> (如S₀, S₁, T₁) 代表能级。</p>
+                </div>
+                <div class="term-card">
+                    <h4>*R vs I(D)</h4>
+                    <p><strong>*R (激发态):</strong> 两个半占据轨道能量<strong>差异很大</strong> (如HO, LU)。</p>
+                    <p><strong>I(D) (中间体):</strong> 两个半占据轨道能量<strong>非常相近</strong> (如两个NB轨道)。</p>
+                </div>
+                <div class="term-card">
+                    <h4>I(D) - 类双自由基</h4>
+                    <p><code>D</code>是Diradicaloid的通用符号，它包含两种类型：</p>
+                    <p><strong>RP (自由基对):</strong> 自由基中心位于<strong>两个</strong>分子上。</p>
+                    <p><strong>BR (双自由基):</strong> 自由基中心位于<strong>同一个</strong>分子上。</p>
+                </div>
+                 <div class="term-card">
+                    <h4>I(Z) - 两性离子</h4>
+                    <p>作为<code>I(D)</code>的备选项，指两个电子成对占据一个NB轨道。</p>
+                    <p>通常由单线态<code>¹R</code>生成，而<code>³R</code>的反应<strong>总是</strong>生成<code>I(D)</code>。</p>
+                </div>
+            </div>
+        </section>
+
+         <section class="infographic-section">
+            <h2><span style="font-size: 1.2em; margin-right: 10px;">💡</span>结论与展望</h2>
+            <p>通过Norrish反应这类具体的“范例”，结合对自旋态和中间体精确的符号描述，我们可以为光化学反应建立清晰的工作模型。这些范式是构建和使用更复杂的“态能图”(State Energy Diagram)来分析、预测和操控光化学反应的基石。</p>
+        </section>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

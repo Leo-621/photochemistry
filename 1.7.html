@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息图：分子有机光化学的范式</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .integration-section { display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .paradigm-box { flex: 1; min-width: 300px; padding: 1.5rem; border-radius: 15px; background: rgba(0, 0, 0, 0.3); border: 2px solid; }
+        #paradigm-structure { border-color: #00897B; }
+        #paradigm-light { border-color: #FFA000; }
+        .paradigm-box h3 { font-size: 1.4em; border: none; padding: 0; margin-bottom: 1rem; }
+        #paradigm-structure h3 { color: #00897B; }
+        #paradigm-light h3 { color: #FFA000; }
+        .concept-tag { display: inline-block; padding: 8px 15px; border-radius: 25px; font-weight: bold; margin-top: 15px; font-size: 0.9em; background-color: rgba(255, 255, 255, 0.1); border: 1px solid; }
+        #paradigm-structure .concept-tag { border-color: #00897B; color: #00897B; }
+        #paradigm-light .concept-tag { border-color: #FFA000; color: #FFA000; }
+        .integration-symbol { font-size: 4em; color: var(--accent-color-1); margin: 0 30px; }
+        .focus-section { text-align: center; background: rgba(123, 31, 162, 0.2); border: 1px solid #7B1FA2; padding: 2rem; border-radius: 15px; margin-bottom: 2rem; }
+        .highlight-light { color: #FFA000; font-weight: bold; }
+        .highlight-matter { color: #00897B; font-weight: bold; }
+        .process-flow { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .step { padding: 1rem 1.5rem; border-radius: 10px; font-size: 1.2em; font-weight: bold; text-align: center; background: rgba(0, 0, 0, 0.4); }
+        .excited-state { color: #FF4081; border: 2px dashed #FF4081; }
+        .arrow { font-size: 2em; color: var(--accent-color-1); }
+        .outcomes { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .outcome-card { background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; width: 250px; text-align: center; }
+        #outcome-p { border-top: 4px solid #FFA000; } #outcome-r { border-top: 4px solid #00897B; }
+        .outcome-card h4 { font-size: 1.8em; margin: 0 0 10px 0; }
+        #outcome-p h4 { color: #FFA000; } #outcome-r h4 { color: #00897B; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header"><h1>分子有机光化学的范式</h1></header>
+        
+        <section class="infographic-section">
+            <div class="integration-section">
+                <div class="paradigm-box" id="paradigm-structure">
+                    <h3>⚛️ 物理有机化学范式</h3>
+                    <p>关注<strong>结构-能量-反应性的关联性</strong> (Structure-energy-reactivity correlations)。</p>
+                    <div class="concept-tag">🔑 核心组织概念: 分子结构 (包括其隐含的电子、原子核和自旋构型)</div>
+                </div>
+
+                <div class="integration-symbol">➕</div>
+
+                <div class="paradigm-box" id="paradigm-light">
+                    <h3>💡 电磁辐射与物质范式</h3>
+                    <p>描述<strong>电磁辐射（光子）</strong>与<strong>物质（有机分子的电子和原子核）</strong>的相互作用。</p>
+                    <div class="concept-tag">🔑 核心组织概念: 光子或振荡的电磁波</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="infographic-section">
+            <div class="focus-section">
+                <h2>学科焦点：分子有机光化学</h2>
+                <p>该领域关注 <span class="highlight-light">光（由光子或振荡电磁波代表）</span> 与 <span class="highlight-matter">物质（由分子的电子和原子核代表）</span> 的相互作用，这种相互作用导致了以下过程：</p>
+            </div>
+            <div class="process-flow">
+                <div class="step">相互作用</div>
+                <div class="arrow">→</div>
+                <div class="step excited-state">*R 的形成 (激发态)</div>
+                <div class="arrow">→</div>
+                <div class="step">最终转化</div>
+            </div>
+            <div class="outcomes">
+                <div class="outcome-card" id="outcome-p">
+                    <h4>P (产物)</h4>
+                    <p>通过光化学 (Photochemistry) 途径</p>
+                </div>
+                <div class="outcome-card" id="outcome-r">
+                    <h4>R (反应物)</h4>
+                    <p>通过光物理 (Photophysics) 途径</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

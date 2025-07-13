@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+:root {
+    --bg-color: #1a1a2e;
+    --card-bg: rgba(27, 27, 46, 0.85);
+    --text-color: #e0e0e0;
+    --header-color: #ffffff;
+    --accent-color-1: #9fa8da;
+    --border-color: rgba(128, 128, 255, 0.3);
+    --nav-highlight-bg: rgba(159, 168, 218, 0.25);
+}
+
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+#starfield-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* --- 导航栏主样式 --- */
+.main-nav {
+    background-color: rgba(27, 27, 46, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* 关键修改：使用 > (直接子元素选择器)，
+  确保 display:flex 只影响顶层ul，不影响下拉菜单的ul。
+  这样下拉菜单的列表项就会自然地从上到下垂直排列。
+*/
+.main-nav > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav ul li {
+    position: relative;
+}
+
+.main-nav ul li a {
+    display: block;
+    color: var(--header-color);
+    text-decoration: none;
+    padding: 20px 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+/* --- 一级下拉菜单：从上向下滑动 --- */
+.dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(27, 27, 46, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 10px 0;
+    min-width: 250px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    /* 确保下拉菜单的ul是垂直排列的 */
+    list-style: none;
+    margin: 0;
+}
+
+.dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* --- 二级下拉菜单：从左向右滑动 --- */
+.submenu-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-15px); 
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    
+    position: absolute;
+    top: -11px;
+    left: 100%; 
+    background-color: rgba(27, 27, 46, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 10px 0;
+    min-width: 250px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    /* 确保下拉菜单的ul是垂直排列的 */
+    list-style: none;
+    margin: 0;
+}
+
+.dropdown-submenu:hover > .submenu-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); 
+}
+
+/* --- 通用悬停高亮效果 --- */
+.main-nav ul li:hover > a {
+    background-color: var(--nav-highlight-bg);
+}
+
+.dropdown-menu li a:hover {
+    background-color: var(--nav-highlight-bg);
+}
+
+
+/* --- 页面内容区域样式 (保持不变) --- */
+.main-content-area {
+    padding: 2rem;
+    padding-top: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--accent-color-1);
+}
+
+.page-header h1, .page-header p {
+    color: var(--header-color);
+}
+
+.welcome-message {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.container, .back-link {
+    padding: 2rem;
+    margin: 2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+}
+.back-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--accent-color-1);
+    margin-bottom: 2rem;
+    padding: 0.6rem 1.2rem;
+    transition: background-color 0.3s;
+}
+.back-link:hover {
+    background-color: var(--accent-color-1);
+    color: var(--bg-color);
+}

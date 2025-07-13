@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光化学实践：如何“计数”光子</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .formula { background-color: rgba(0,0,0,0.5); padding: 1.5rem; border-radius: 8px; text-align: center; font-size: 1.5em; margin: 1.5rem 0; border-left: 5px solid; white-space: nowrap; overflow-x: auto; }
+        .step-container { display: flex; flex-direction: column; gap: 1rem; }
+        .step-item { display: flex; align-items: center; gap: 1.5rem; }
+        .step-number { font-size: 2.5em; font-weight: 700; color: var(--accent-color-1); min-width: 50px; text-align: center; }
+        .note { padding: 1rem; background: rgba(159, 168, 218, 0.1); border-left: 4px solid var(--accent-color-1); border-radius: 8px; margin-top: 1.5rem; }
+        .note p { margin: 0; }
+        var, i { font-style: italic; color: var(--accent-color-2); }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>如何“计数”光子</h1>
+            <h2>光化学家的能量计量学</h2>
+        </header>
+        
+        <section class="infographic-section">
+            <h3>第一步：定义基本单位——单个光子的能量</h3>
+            <p>一切计算始于爱因斯坦的光-能关系式。它告诉我们，一个光子的能量(<i>E</i>)由其波长(<i>λ</i>)或频率(<i>ν</i>)唯一确定。</p>
+            <div class="formula" style="border-color: #3fb950;"><i>E</i><sub>photon</sub> = <i>hν</i> = <i>hc</i>/<i>λ</i></div>
+            <div class="note">
+                <p><b>前提条件：</b>只有当光子能量(<i>E</i><sub>photon</sub>)恰好等于分子能隙(<i>ΔE</i><sub>molecule</sub>)时，吸收才会发生。这是光与物质相互作用的“共振”规则。</p>
+            </div>
+        </section>
+
+        <section class="infographic-section">
+            <h3>第二步：计数方法——从总能量到光子数</h3>
+            <p>知道了单个光子的能量，我们就可以通过测量样品吸收的<strong>总能量</strong>来计算吸收的光子总数(<i>n</i>)。</p>
+            <div class="step-container">
+                <div class="step-item"><div class="step-number">1</div><p>通过实验测量样品吸收的总能量 <i>E</i><sub>total</sub>。</p></div>
+                <div class="step-item"><div class="step-number">2</div><p>根据光源波长 <i>λ</i> 计算出单个光子的能量 <i>E</i><sub>photon</sub>。</p></div>
+                <div class="step-item"><div class="step-number">3</div><p>将两者相除，即可“数”出吸收的光子总数 <i>n</i>。<br><b><i>n</i> = <i>E</i><sub>total</sub> / <i>E</i><sub>photon</sub></b></p></div>
+            </div>
+        </section>
+
+        <section class="infographic-section">
+            <h3 style="color: #76e3ea;">第三步：引入化学计量单位——爱因斯坦 (Einstein)</h3>
+            <p>为了方便地处理摩尔级别的化学反应，光化学家定义了“爱因斯坦”这一单位，它将微观的光子与宏观的摩尔联系起来。</p>
+            <p><strong>1 爱因斯坦 = 1 摩尔的光子 = 6.02 × 10<sup>23</sup> 个光子</strong></p>
+            <p>因此，1爱因斯坦光子的总能量为：</p>
+            <div class="formula" style="border-color: #76e3ea;"><i>E</i><sub>einstein</sub> = <i>N</i><sub>0</sub><i>hν</i> = <i>N</i><sub>0</sub><i>hc</i>/<i>λ</i></div>
+        </section>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

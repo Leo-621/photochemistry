@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解读 Scheme 1.1: 光化学反应的全局范式</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specific styles for this page's layout */
+        .flow-diagram { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+        .flow-node { text-align: center; padding: 1.5rem; border-radius: 12px; width: 80%; max-width: 500px; }
+        .flow-node.start { background-color: rgba(63, 81, 181, 0.3); border: 1px solid #3F51B5; }
+        .flow-node.core { background-color: rgba(229, 57, 53, 0.3); border: 1px solid #E53935; border-radius: 50%; width: 200px; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1rem; }
+        .flow-node.process { background-color: rgba(123, 31, 162, 0.3); border: 1px solid #7B1FA2; }
+        .flow-node.end { background-color: rgba(63, 81, 181, 0.3); border: 1px solid #3F51B5; }
+        .flow-arrow { font-size: 2.5rem; color: var(--accent-color-1); }
+        .path-detail { background-color: rgba(0,0,0,0.2); padding: 1rem; margin-bottom: 1rem; border-radius: 8px; border-left: 3px solid var(--accent-color-2); text-align: left;}
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>解读 Scheme 1.1: 光化学反应的全局范式</h1>
+        </header>
+        <div class="flow-diagram">
+            <div class="card flow-node start">
+                <h2>起点: 光吸收</h2>
+                <p>基态反应物 (R) + 光子 (hν)</p>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="card flow-node core">
+                <h2>核心物种</h2>
+                <p>电子激发态 (*R)</p>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="card flow-node process">
+                <h2>初级光化学过程</h2>
+                <p>激发态 (*R) 转化为产物 (P) 的三条核心路径:</p>
+                <br>
+                <div class="path-detail">
+                    <strong>路径 1: *R → I → P</strong>
+                    <p>通过一个明确的、基态的 [反应中间体 I]。这是最常见的途径。</p>
+                </div>
+                <div class="path-detail">
+                    <strong>路径 2: *R → F → P</strong>
+                    <p>不经过稳定中间体，而是通过一个能量上的 [漏斗 F] 直接转化。</p>
+                </div>
+                <div class="path-detail">
+                    <strong>路径 3: *R → [*I 或 *P] → P</strong>
+                    <p>能量被传递下去，生成一个本身也处于激发态的物种 [*I 或 *P]。</p>
+                </div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="card flow-node end">
+                <h2>最终产物 (P)</h2>
+                <p>光化学反应的稳定生成物</p>
+            </div>
+        </div>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

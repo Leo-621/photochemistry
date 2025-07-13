@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息图：理解分子有机光化学中的“范例”(Exemplars)</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .highlight { color: var(--accent-color-2); font-weight: 700; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .sub-card { background: rgba(0,0,0,0.2); border-radius: 12px; padding: 1.5rem; border-bottom: 4px solid var(--accent-color-1); }
+        .sub-card h3 { font-size: 1.5em; color: var(--accent-color-2); border: none; padding: 0; display: flex; align-items: center; }
+        .sub-card .icon { margin-right: 1rem; font-size: 1.2em;}
+        .sub-card ul { padding-left: 20px; }
+        .sub-card li { margin-bottom: 0.5rem; }
+        .sub-card strong { color: var(--accent-color-1); }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1><span class="highlight">范例 (Exemplars)</span>：实验与理解的向导</h1>
+            <p>基于《分子有机光化学》第一章 1.6 节内容构建</p>
+        </header>
+
+        <section class="infographic-section">
+            <h2><span class="icon">📖</span>背景：教科书与范式 (Paradigms)</h2>
+            <ul>
+                <li>教科书通常描述一个研究领域的<strong>范式</strong>，这些范式构成了该领域的<strong>假设、概念、策略、方法和技术</strong>。</li>
+                <li><strong>范例 (Exemplars)</strong> 是一种关键的认知工具，用于学习和理解这些范式。</li>
+            </ul>
+        </section>
+
+        <section class="infographic-section">
+            <h2><span class="icon">💡</span>核心定义：什么是范例 (Exemplar)？</h2>
+            <div class="grid-container">
+                <div class="sub-card">
+                    <h3><span class="icon">🎯</span>基本定义 (Pedagogical Tool)</h3>
+                    <p>范例是<strong>具体的、信息丰富的、经过充分检验的例子</strong>，作为一种教学工具，用以向学生介绍新的科学领域。</p>
+                </div>
+                <div class="sub-card">
+                    <h3><span class="icon">🏛️</span>广义定义 (Scientific Framework)</h3>
+                    <p>范例也可以被广义地定义为一项<strong>被普遍认可的科学成就</strong>，或一系列成就的集合。它为科学家如何研究新体系提供了<strong>理论和实验框架</strong>。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="infographic-section">
+            <h2><span class="icon">🔬</span>具体案例：范例在化学中的应用</h2>
+            <div class="grid-container">
+                 <div class="sub-card">
+                    <h3><span class="icon">🧪</span>有机化学中的范例</h3>
+                    <ul>
+                        <li><strong>范例:</strong> 官能团 (Functional groups)</li>
+                        <li><strong>作用:</strong> 提供一个熟悉的范例集合，用于理解<strong>有机结构、反应机理和有机合成</strong>。</li>
+                        <li><strong>扩展:</strong> 能够广泛地预测大量实际分子的反应和性质。</li>
+                    </ul>
+                </div>
+                <div class="sub-card">
+                    <h3><span class="icon">☀️</span>有机光化学中的范例</h3>
+                    <ul>
+                        <li><strong>范例:</strong> 苯甲酮 (benzophenone) 与醇 (alcohols) 的光致反应。</li>
+                        <li><strong>作用:</strong> 作为研究<strong>有机光化学反应机理</strong>的范例。</li>
+                         <li><strong>应用:</strong> 此类范例在文本中被广泛使用，为理解分子有机光化学提供基础。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

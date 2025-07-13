@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光化学的科学范式：规则、实体与演进</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .section-title { display: flex; align-items: center; gap: 1rem; font-size: 1.8rem; color: var(--accent-color-1); margin-bottom: 1.5rem; }
+        .section-title .icon { font-size: 2.2rem; }
+        .paradigm-def ul { list-style: none; padding-left: 0; }
+        .paradigm-def li { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; font-size: 1.1rem; }
+        .li-icon { font-size: 1.5rem; color: var(--accent-color-1); margin-top: 5px; }
+        .entities-diagram { background: rgba(0,0,0,0.3); border-radius: 8px; padding: 2rem; text-align: center; font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; }
+        .entity { font-weight: bold; }
+        .entity-R { color: var(--text-color); }
+        .entity-hv { color: #fd7e14; }
+        .entity-R-star { color: #dc3545; }
+        .entity-I { color: #28a745; }
+        .entity-P { color: #007bff; }
+        .arrow { color: var(--accent-color-1); margin: 0 1rem; }
+        .focus-points { text-align: center; }
+        .focus-tag { display: inline-block; background: rgba(0,0,0,0.2); border-radius: 20px; padding: 0.5rem 1rem; margin: 0.25rem; font-size: 1rem; }
+        .shift-container { display: flex; justify-content: space-around; align-items: center; margin-top: 2rem; }
+        .state { text-align: center; width: 40%; }
+        .state .icon { font-size: 4rem; margin-bottom: 0.5rem; }
+        .state h3 { font-size: 1.2rem; color: var(--text-color); }
+        .shift-arrow { font-size: 3rem; color: #dc3545; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>光化学的科学范式</h1>
+        </header>
+
+        <section class="infographic-section" id="paradigm-def">
+            <h2 class="section-title"><span class="icon">📖</span> 什么是科学范式?</h2>
+            <p>它是一个被科学共同体所接受的、用于指导研究的“思想与工具”的集合体，它定义了游戏规则。</p>
+            <ul>
+                <li><span class="li-icon">🏛️</span> <div><strong>提供研究框架:</strong> 包含公认的假设、概念和策略。</div></li>
+                <li><span class="li-icon">🗣️</span> <div><strong>确立共同语言:</strong> 让科学家能在共同的基础上进行有效沟通。</div></li>
+                <li><span class="li-icon">🧭</span> <div><strong>指引研究方向:</strong> 帮助研究者专注于重要问题，避免在旁枝末节上争论。</div></li>
+            </ul>
+        </section>
+        
+        <section class="infographic-section" id="core-paradigm">
+            <h2 class="section-title"><span class="icon">🔬</span> 当前光化学的核心范式</h2>
+            <p>现代分子有机光化学的范式，是围绕着一系列基本实体及其转化过程构建的：</p>
+            <div class="entities-diagram">
+                <span class="entity entity-R">R</span>
+                <span class="entity entity-hv">+ hv</span>
+                <span class="arrow">→</span>
+                <span class="entity entity-R-star">*R</span>
+                <span class="arrow">→</span>
+                <span class="entity entity-I">I</span>
+                <span class="arrow">→</span>
+                <span class="entity entity-P">P</span>
+            </div>
+            <div class="focus-points">
+                <p><strong>范式关注这些实体的三大核心属性：</strong></p>
+                <span class="focus-tag">结构 (Structure)</span>
+                <span class="focus-tag">能量 (Energetics)</span>
+                <span class="focus-tag">动力学 (Dynamics)</span>
+            </div>
+        </section>
+
+        <section class="infographic-section" id="paradigm-shift">
+            <h2 class="section-title"><span class="icon">🔄</span> 范式并非永恒：演进与变革</h2>
+            <p>科学范式会随着新发现和新技术的出现而改变。对“光”的认知就是科学史上一次著名的范式转移。</p>
+            <div class="shift-container">
+                <div class="state" id="before">
+                    <div class="icon">〰️</div>
+                    <h3>经典范式: 光是波</h3>
+                </div>
+                <div class="shift-arrow">⇒</div>
+                <div class="state" id="after">
+                    <div class="icon" style="position:relative; display:inline-block;">
+                        <span style="position:absolute; top: 50%; left:50%; transform: translate(-50%, -50%); font-size:2rem; color: #fd7e14;">●</span>
+                        <span style="font-size:4rem; opacity:0.6;">〰️</span>
+                    </div>
+                    <h3>量子范式: 波粒二象性</h3>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

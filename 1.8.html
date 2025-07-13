@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息图：从可能到最概然的光化学过程</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .funnel-container { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+        .funnel-level { width: 100%; padding: 1.5rem; border-radius: 15px; text-align: center; font-size: 1.5em; font-weight: 700; color: var(--header-color); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
+        #level-possible { background-color: #7986CB; width: 90%; }
+        #level-plausible { background-color: #4DB6AC; width: 70%; }
+        #level-probable { background-color: #FFC107; color: #333; width: 50%; }
+        .filter-section { background: rgba(0,0,0,0.2); border-left: 5px solid #D32F2F; padding: 1.5rem; border-radius: 10px; width: 80%; }
+        .filter-section h3 { font-size: 1.3em; margin-top: 0; display: flex; align-items: center; color: #D32F2F; border: none; padding: 0;}
+        .filter-section .icon { margin-right: 10px; }
+        .filter-section ul { list-style-type: disc; padding-left: 20px; }
+        .filter-section li { margin-bottom: 0.5rem; }
+        .overall-process { text-align: center; font-size: 1.2em; margin: 1.5rem 0; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 8px; font-family: monospace; }
+        .goal-text strong { color: #FFC107; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>1.8 范式指南：从可能到最概然的光化学过程</h1>
+        </header>
+
+        <main class="funnel-container">
+            <div class="funnel-level" id="level-possible">🌌 可能的途径 (Possible Pathways)</div>
+            <div class="filter-section">
+                <h3><span class="icon">⚖️</span>筛选层 1: 守恒定律 (Conservation Laws)</h3>
+                <p>要成为“合理的”途径，分子及其振动和自旋子结构必须遵守以下四项基本定律：</p>
+                <ul>
+                    <li>(1) <strong>能量守恒</strong></li>
+                    <li>(2) <strong>动量守恒</strong> (线性和角动量)</li>
+                    <li>(3) <strong>质量守恒</strong> (原子的数量和种类)</li>
+                    <li>(4) <strong>电荷守恒</strong></li>
+                </ul>
+                <p><em>不遵守这些定律的途径被视为“不可能的”。</em></p>
+            </div>
+
+            <div class="funnel-level" id="level-plausible">✅ 合理的途径 (Plausible Pathways)</div>
+            <div class="filter-section">
+                <h3><span class="icon">🧬</span>筛选层 2: 选择定则与结构细节</h3>
+                <p>要从“合理”推进到“最概然”，必须考虑：</p>
+                <ul>
+                    <li><strong>分子结构细节</strong>及其隐含的能量学和与结构转化相关的组织。</li>
+                    <li>可用的<strong>相互作用、耦合、结构</strong>。</li>
+                    <li>动量和能量交换的<strong>合理机制</strong>。</li>
+                </ul>
+                <p><em>这些考虑因素共同构成了决定合理反应途径的<strong>选择定则 (Selection Rules)</strong>。</em></p>
+            </div>
+            <div class="filter-section">
+                <h3><span class="icon">⏱️</span>筛选层 3: 动力学与速率 (Kinetics and Rates)</h3>
+                <p>基于动力学考虑（反应速率）进行筛选：</p>
+                <ul>
+                    <li>需要考虑<strong>重组能 (reorganization energy)</strong> 和每个步骤的<strong>时间尺度 (time scales)</strong>。</li>
+                    <li>通过消除较慢的途径，找出速率最快的合理反应途径。</li>
+                </ul>
+            </div>
+
+            <div class="funnel-level" id="level-probable">⚡ 最概然的途径 (The Probable Pathway)</div>
+            <p style="text-align: center; font-style: italic;">(发生速率最快的合理途径，它在从 *R 开始的竞争中获胜)</p>
+
+            <section class="infographic-section" style="width: 100%;">
+                <h2>🎯 范式的全局目标与验证</h2>
+                 <div class="overall-process">
+                    R + hν → *R → F (Funnel) → P (光化学) 或 R (光物理)
+                </div>
+                <p class="goal-text"><strong>验证:</strong> 使用实验和计算方法来“证明”在给定条件下哪个合理途径实际发生。</p>
+                <p class="goal-text"><strong>最终目标:</strong> 让学生学习全局的、支配性的范式，全面了解分子过程和光子到光化学转化的<strong>结构、能量学和动力学</strong>。范式使得能够基于这些知识做出明智的判断和理论上的速率估算。</p>
+            </section>
+        </main>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光化学的魅力：我们为何探究光与分子的舞蹈？</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .reason-card { border-left: 5px solid; margin-bottom: 2rem; padding: 2rem; background: rgba(0,0,0,0.2); border-radius: 8px;}
+        .reason-card .card-title { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .reason-card .icon { font-size: 2.5rem; }
+        .reason-card h2 { font-size: 1.8rem; font-weight: 500; color: var(--header-color); margin: 0; border: none; padding: 0; }
+        .card-content p { font-size: 1rem; line-height: 1.7; color: var(--text-color); }
+        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .app-item { background: rgba(0,0,0,0.3); border-radius: 8px; padding: 1rem; text-align: center; }
+        .app-item .app-icon { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
+        .timescale { background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; margin-top: 1rem; text-align: center; }
+        .timescale strong { font-size: 1.5rem; color: var(--accent-color-1); }
+        .timescale span { font-size: 1.2rem; margin: 0 1rem; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>光化学的魅力</h1>
+            <p>我们为何探究光与分子的舞蹈？</p>
+        </header>
+
+        <section class="infographic-section">
+            <div class="reason-card" style="border-left-color: #8A2BE2;">
+                <div class="card-title">
+                    <span class="icon">🌌</span>
+                    <h2>智识的乐趣</h2>
+                </div>
+                <div class="card-content">
+                    <p>在最基础的层面，光化学让我们得以洞察宇宙两大基本组分——<strong>光 (hv)</strong> 与<strong>物质 (R)</strong> 之间迷人的相互作用，并在整合多学科知识中获得纯粹的智力满足。</p>
+                </div>
+            </div>
+            <div class="reason-card" style="border-left-color: #32CD32;">
+                <div class="card-title">
+                    <span class="icon">🔗</span>
+                    <h2>交叉的科学</h2>
+                </div>
+                <div class="card-content">
+                    <p>光化学本质上是一门**跨学科**科学。它迫使我们打破学术壁垒，融合不同领域的理论与方法，从而培养出现代科研所必需的广阔视野和整合能力。</p>
+                </div>
+            </div>
+            <div class="reason-card" style="border-left-color: #FFD700;">
+                <div class="card-title">
+                    <span class="icon">🌍</span>
+                    <h2>改变世界的应用</h2>
+                </div>
+                <div class="card-content">
+                    <div class="app-grid">
+                        <div class="app-item"><span class="app-icon">👁️</span>人类视觉</div>
+                        <div class="app-item"><span class="app-icon">❤️</span>光动力疗法</div>
+                        <div class="app-item"><span class="app-icon">💻</span>芯片光刻</div>
+                        <div class="app-item"><span class="app-icon">💡</span>激光技术</div>
+                        <div class="app-item"><span class="app-icon">☀️</span>太阳能转化</div>
+                        <div class="app-item"><span class="app-icon">🔬</span>荧光传感</div>
+                    </div>
+                </div>
+            </div>
+            <div class="reason-card" style="border-left-color: #E94560;">
+                <div class="card-title">
+                    <span class="icon">⏱️</span>
+                    <h2>探索超快世界</h2>
+                </div>
+                <div class="card-content">
+                    <p>借助超快激光，我们能以前所未有的时间分辨率，捕捉化学反应的瞬间。这是通往理解乃至**操控化学反应**的终极前沿。</p>
+                    <div class="timescale">
+                        <strong>飞秒 fs (10⁻¹⁵ s)</strong> <span>→</span> <strong>阿秒 as (10⁻¹⁸ s)</strong>
+                        <p style="font-size:0.9rem; margin-top:0.5rem; color:#b0b0b0;">(从原子振动快照，到观测电子运动的极限)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

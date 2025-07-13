@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光化学核心原理</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        window.MathJax = { tex: { inlineMath: [['$', '$']] }, svg: { fontCache: 'global' } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <style>
+        .formula-box { background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; text-align: center; font-size: 1.3em; margin: 1.5rem 0; border: 1px solid var(--accent-color-1); color: var(--accent-color-1); }
+        .formula-box span { color: white; font-style: italic; }
+        .spectrum-container { width: 100%; height: 60px; background: linear-gradient(to right,#8A2BE2,#4B0082,#0000FF,#00FFFF,#00FF00,#FFFF00,#FF7F00,#FF0000); border-radius: 8px; position: relative; margin-top: 2rem; }
+        .spectrum-labels { display: flex; justify-content: space-between; padding: 0 10px; margin-top: 10px; font-size: 0.9em; }
+        .spectrum-marker { position: absolute; top: -15px; height: 90px; width: 2px; background-color: white; display: flex; flex-direction: column; align-items: center; }
+        .spectrum-marker::after, .spectrum-marker::before { position: absolute; background: var(--bg-color); padding: 2px 6px; border-radius: 4px; font-size: 0.8em; white-space: nowrap; }
+        .spectrum-marker::after { content: attr(data-label); top: -25px; }
+        .spectrum-marker::before { content: attr(data-energy); bottom: -40px; color: var(--accent-color-2); font-weight: bold; }
+        .energy-scale-container { display: flex; justify-content: center; align-items: flex-start; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+        .energy-scale { width: 30px; height: 400px; background: linear-gradient(to top, #ff4081, #ffd700, #4dffaf); position: relative; border-radius: 5px; }
+        .scale-label { position: absolute; left: 35px; transform: translateY(-50%); font-size: 0.9em; }
+        .energy-item-list { position: relative; height: 400px; flex-basis: 300px; flex-grow: 1; }
+        .energy-item { position: absolute; width: 100%; display: flex; align-items: center; }
+        .energy-item .label { padding: 4px 8px; border-radius: 4px; background: rgba(0,0,0,0.2); }
+        .energy-item .line { flex-grow: 1; height: 1px; background: var(--border-color); margin: 0 10px; }
+        .energy-item .value { font-weight: bold; }
+        .bonds .value { color: var(--accent-color-2); }
+        .excitation .value { color: var(--accent-color-1); }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>光化学核心原理</h1>
+            <p>光化学反应的发生，关键在于单个光子的能量是否足以打断化学键，而非光束的强弱。</p>
+        </header>
+
+        <section class="infographic-section">
+            <h2>1. 光子的“能量身份”：波长决定一切</h2>
+            <p>光由名为光子的能量包组成。每个光子的能量 (E) 与其波长 (λ) 成反比。简而言之，<strong>波长越短，能量越高</strong>。对于光化学家而言，更常用“一摩尔光子”的能量（称为一个“爱因斯坦”）来衡量，单位是 kcal/mol。</p>
+            <div class="formula-box"><span>E (kcal/mol) ≈</span> 2.86 × 10⁴ / λ (nm)</div>
+            <p>这个公式是光化学计算的基石，它直接将光的物理属性（波长）与化学能量尺度（kcal/mol）联系起来。</p>
+        </section>
+
+        <section class="infographic-section">
+            <h2>2. 电磁波谱上的能量梯度</h2>
+            <p>不同波长的光对应着截然不同的能量。对有机光化学而言，最重要的是紫外（UV）和可见光（Visible）区域。</p>
+            <div class="spectrum-container">
+                <div class="spectrum-marker" style="left: 10%;" data-label="200 nm (UV)" data-energy="143 kcal/mol"></div>
+                <div class="spectrum-marker" style="left: 25%;" data-label="350 nm (UV)" data-energy="82 kcal/mol"></div>
+                <div class="spectrum-marker" style="left: 75%;" data-label="700 nm (Vis)" data-energy="41 kcal/mol"></div>
+            </div>
+            <div class="spectrum-labels"><span>← 短波长 / 高能量</span><span>长波长 / 低能量 →</span></div>
+        </section>
+        
+        <section class="infographic-section">
+             <h2>3. 关键对决：光子能量 vs. 化学键能</h2>
+            <p>一个光化学反应能否启动，遵循一个简单而严格的规则：<strong>单个光子的能量必须大于或等于目标化学键的断裂能 $E_{photon} \geq E_{bond}$。</strong></p>
+            <div class="energy-scale-container">
+                <div style="text-align: center;"><strong>能量尺度 (kcal/mol)</strong>
+                    <div class="energy-scale">
+                        <div class="scale-label" style="top: calc(100% - 110/1.5*1px*400/100);">110</div><div class="scale-label" style="top: calc(100% - 80/1.5*1px*400/100);">80</div>
+                        <div class="scale-label" style="top: calc(100% - 60/1.5*1px*400/100);">60</div><div class="scale-label" style="top: calc(100% - 40/1.5*1px*400/100);">40</div>
+                    </div>
+                </div>
+                <div class="energy-item-list">
+                    <h4 style="text-align:center; margin-bottom: 20px;">分子激发态能级 vs. 常见化学键能</h4>
+                    <div class="energy-item excitation" style="bottom: calc(110/150 * 400px);"><div class="label">苯 (S₁)</div><div class="line"></div><div class="value">110</div></div>
+                    <div class="energy-item bonds" style="bottom: calc(104/150 * 400px);"><div class="label">C-H键</div><div class="line"></div><div class="value">104</div></div>
+                    <div class="energy-item excitation" style="bottom: calc(85/150 * 400px);"><div class="label">苯 (T₁)</div><div class="line"></div><div class="value">85</div></div>
+                    <div class="energy-item bonds" style="bottom: calc(83/150 * 400px);"><div class="label">C-C键</div><div class="line"></div><div class="value">83</div></div>
+                    <div class="energy-item excitation" style="bottom: calc(60/150 * 400px);"><div class="label">萘 (T₁)</div><div class="line"></div><div class="value">60</div></div>
+                    <div class="energy-item bonds" style="bottom: calc(37/150 * 400px);"><div class="label">O-O键</div><div class="line"></div><div class="value">37</div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

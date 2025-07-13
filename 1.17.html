@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光的能量谱实用指南</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .formula-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+        .formula { background-color: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px; text-align: center; font-family: 'Roboto Mono', monospace; font-size: 1.1em; }
+        .formula .label { font-size: 0.9em; color: var(--text-color); opacity: 0.7; display: block; margin-bottom: 10px; }
+        .spectrum-container { padding: 2rem 1rem; }
+        .spectrum-bar { display: flex; width: 100%; height: 60px; border-radius: 10px; overflow: hidden; }
+        .spectrum-segment { flex: 1; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
+        .uv { background: linear-gradient(90deg, #4c00ff, #9f00ff); }
+        .violet { background: #9f00ff; flex-grow: 0.5; }
+        .green { background: #00ff00; flex-grow: 0.5; }
+        .red { background: #ff0000; }
+        .nir { background: linear-gradient(90deg, #ff0000, #4d0000); }
+        .spectrum-labels { display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; margin-top: 1rem; font-family: 'Roboto Mono', monospace; }
+        .label-group { padding: 10px; border-right: 1px solid var(--border-color); }
+        .label-group:last-child { border-right: none; }
+        .label-group .type { font-size: 1.1em; font-weight: 700; }
+        .label-group .wavelength { opacity: 0.7; }
+        .label-group .energy { font-size: 1.2em; color: var(--accent-color-2); font-weight: 500; }
+        .converter-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; font-family: 'Roboto Mono', monospace; font-size: 1.1em; text-align: center; }
+        .converter-grid span { color: var(--accent-color-1); }
+        var, i { font-style: normal; font-family: 'Roboto Mono', monospace; color: var(--text-color); }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>光的能量谱实用指南</h1>
+            <p class="subtitle" style="font-family: monospace;">Computing the Energy of a Mole of Photons</p>
+        </header>
+        
+        <section class="infographic-section">
+            <h3>化学家的快捷公式</h3>
+            <div class="formula-box">
+                <div class="formula"><span class="label">基于频率 ν (Hz)</span><i>E</i> (kcal mol<sup>-1</sup>) = (9.52 × 10<sup>-14</sup>) × <i>ν</i></div>
+                <div class="formula"><span class="label">基于波长 λ (nm)</span><i>E</i> (kcal mol<sup>-1</sup>) = (2.86 × 10<sup>4</sup>) / <i>λ</i></div>
+            </div>
+        </section>
+
+        <section class="infographic-section">
+            <h3>能量与波长关系速查</h3>
+            <div class="spectrum-container">
+                <div class="spectrum-bar">
+                    <div class="spectrum-segment uv">UV</div><div class="spectrum-segment violet">Violet</div>
+                    <div class="spectrum-segment green">Green</div><div class="spectrum-segment red">Red</div>
+                    <div class="spectrum-segment nir">NIR</div>
+                </div>
+                <div class="spectrum-labels">
+                    <div class="label-group"><div class="type">紫外光</div><div class="wavelength">200-400 nm</div><div class="energy">140-70 kcal/mol</div></div>
+                    <div class="label-group"><div class="type">紫光</div><div class="wavelength">~400 nm</div><div class="energy">70 kcal/mol</div></div>
+                    <div class="label-group"><div class="type">绿光</div><div class="wavelength">~500 nm</div><div class="energy">60 kcal/mol</div></div>
+                    <div class="label-group"><div class="type">红光</div><div class="wavelength">~700 nm</div><div class="energy">40 kcal/mol</div></div>
+                    <div class="label-group"><div class="type">近红外</div><div class="wavelength">~1000 nm</div><div class="energy">30 kcal/mol</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="infographic-section">
+            <h3>能量单位换算工具箱</h3>
+            <div class="converter-grid">
+                <div>1 kcal mol<sup>-1</sup> &nbsp; = &nbsp; <span>4.18</span> kJ mol<sup>-1</sup></div>
+                <div>1 kcal mol<sup>-1</sup> &nbsp; = &nbsp; <span>350</span> cm<sup>-1</sup></div>
+                <div>1 kcal mol<sup>-1</sup> &nbsp; = &nbsp; <span>0.0434</span> eV</div>
+            </div>
+        </section>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

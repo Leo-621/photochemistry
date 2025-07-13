@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分子光化学反应范式</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .scheme-display { text-align: center; font-size: 1.8rem; font-weight: 500; padding: 2rem; margin-bottom: 3rem; border-radius: 10px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); }
+        .scheme-display .photon { color: #fd7e14; }
+        .scheme-display .excited-state { color: #dc3545; font-weight: 700; }
+        .scheme-display .product { color: #00BFFF; }
+        .scheme-display .arrow { margin: 0 1rem; }
+        .pathways-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .pathway-card { background-color: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem; }
+        .pathway-card .path-title { font-size: 1.2rem; font-weight: 700; color: var(--accent-color-2); margin-top: 0; }
+        .pathway-card .path-equation { font-family: 'Courier New', monospace; font-size: 1.1rem; font-weight: bold; margin: 1rem 0; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>分子光化学反应范式</h1>
+            <p class="subtitle">从光子吸收到产物形成的旅程</p>
+        </header>
+        <div class="scheme-display">
+            <span>R</span>
+            <span class="photon">+ hν</span>
+            <span class="arrow">→</span>
+            <span class="excited-state">R*</span>
+            <span class="arrow">→</span>
+            <span class="product">[ I 或 P ]</span>
+        </div>
+        <div class="pathways-container">
+            <h2 style="text-align:center; margin-bottom: 2rem; font-size: 1.8rem;">激发态R*的三条主要化学路径</h2>
+            <div class="pathways-grid">
+                <div class="pathway-card card">
+                    <h3 class="path-title">路径 1: 经由活性中间体 (最常见)</h3>
+                    <div class="path-equation">R* → I → P</div>
+                    <p>激发态首先衰变形成一个离散的、可观测的活性中间体(I)，随后该中间体再转化为最终产物。</p>
+                </div>
+                <div class="pathway-card card">
+                    <h3 class="path-title">路径 2: 协同反应路径</h3>
+                    <div class="path-equation">R* → P</div>
+                    <p>激发态通过一个协同过程直接转化为产物，不经过任何稳定的中间体。</p>
+                </div>
+                <div class="pathway-card card">
+                    <h3 class="path-title">路径 3: 经由激发态产物</h3>
+                    <div class="path-equation">R* → P* → P</div>
+                    <p>激发态首先形成产物的激发态(P*)，它作为中间体，随后再回到基态产物。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="background.js" defer></script>
+</body>
+</html>

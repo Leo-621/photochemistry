@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有机光化学学习路线图</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    
+    <style>
+        .markdown-content h2 { font-size: 1.8em; border: none; padding: 0; margin-bottom: 1rem; }
+        .roadmap-container { padding: 1.5rem 0; }
+        .roadmap-line { display: flex; align-items: center; margin: 2rem 0; }
+        .roadmap-station { background-color: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem; flex: 1; min-width: 0; }
+        .roadmap-station h3 { font-size: 1.5em; display: flex; align-items: center; font-weight: 500; margin: 0 0 1rem 0; border: none; padding: 0; }
+        .roadmap-station h3 .chapter-tag { font-size: 0.7em; padding: 4px 10px; border-radius: 15px; margin-right: 15px; color: var(--bg-color); font-weight: bold; }
+        .tag-core { background-color: #a371f7; } /* Purple */
+        .tag-physics { background-color: #56d364; } /* Green */
+        .tag-chem { background-color: #ff7b72; } /* Red/Orange */
+        .roadmap-connector { flex: 0 0 50px; text-align: center; font-size: 2em; color: var(--border-color); }
+        .summary-flow { text-align: center; font-size: 1.8em; font-weight: bold; letter-spacing: 5px; margin-top: 1rem; }
+        .summary-flow span { color: var(--border-color); }
+        footer { text-align: center; margin-top: 2rem; font-size: 0.9em; opacity: 0.7; border-top: 1px solid var(--border-color); padding-top: 1.5rem; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield-canvas"></canvas>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>有机光化学学习路线图</h1>
+            <p>这份路线图将指引我们穿越现代有机光化学的知识体系，从基本概念出发，逐步探索分子在光的作用下发生的奇妙物理与化学过程。</p>
+        </header>
+
+        <section class="infographic-section">
+            <div class="markdown-content">
+                <h2>起点：认识光化学世界的四大“主角”</h2>
+                <p>一切光化学故事都围绕着四个基本实体展开。理解它们的结构、能量和动力学是整个旅程的关键。</p>
+                <ul>
+                    <li><strong>$R$ (Reactant):</strong> 处于基态的、稳定的反应物分子。</li>
+                    <li><strong>$R^*$ (Excited State):</strong> 吸收光子后，处于电子激发态的分子。它是所有光物理和光化学过程的起点。</li>
+                    <li><strong>$I$ (Intermediate):</strong> 由 $R^*$ 转化而来的反应中间体。</li>
+                    <li><strong>$P$ (Product):</strong> 最终生成的稳定产物。</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="roadmap-container">
+            <div class="roadmap-line">
+                <div class="roadmap-station">
+                    <h3><span class="chapter-tag tag-core">第一站</span>基础构建 (第 1 & 2 章)</h3>
+                    <div class="markdown-content">在这里，我们将学习如何描绘四大主角($R, R^*, I, P$)的<strong>电子、振动和自旋</strong>结构。每个稳定构型都对应着一个特定的能量状态，这是我们理解后续所有转变的基础。</div>
+                </div>
+            </div>
+
+            <div class="roadmap-line"><div class="roadmap-connector">↓</div></div>
+
+            <div class="roadmap-line">
+                 <div class="roadmap-station">
+                    <h3><span class="chapter-tag tag-core">核心枢纽</span>态间跃迁 (第 3 章)</h3>
+                     <div class="markdown-content">这是连接所有过程的中心。本章将结构、动力学和能量学概念结合在一起，通过<strong>势能面(PE surfaces)</strong>这一强大工具，直观地展示分子在不同状态间跃迁的可能路径。</div>
+                </div>
+            </div>
+            
+            <div style="display: flex;"><div class="roadmap-connector" style="flex:1; text-align: right; padding-right: 15px;">↙</div><div class="roadmap-connector" style="flex:1; text-align: left; padding-left: 15px;">↘</div></div>
+
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                <div class="roadmap-station" style="flex: 1;">
+                    <h3><span class="chapter-tag tag-physics">光物理线</span>与光的互动 (第 4 & 5 章)</h3>
+                     <div class="markdown-content">
+                     这条路线探索分子如何与光子进行能量交换，但不涉及化学键的根本改变。<ul>
+                     <li><strong>辐射跃迁 (第4章):</strong> 分子如何通过<strong>吸收</strong>光子 ($R+h\nu \rightarrow R^*$) 和<strong>发射</strong>光子 ($R^* \rightarrow R+h\nu$) 来改变状态。</li>
+                     <li><strong>非辐射跃迁 (第5章):</strong> 激发态分子$R^*$如何将能量转化为<strong>热</strong>能，回到基态 ($R^* \rightarrow R + \text{heat}$)。</li>
+                     </ul>
+                    </div>
+                </div>
+                 <div class="roadmap-station" style="flex: 1;">
+                    <h3><span class="chapter-tag tag-chem">光化学线</span>化学键的变革 (第 6 & 7 章)</h3>
+                     <div class="markdown-content">
+                     这条路线探索激发态分子如何引发真正的化学反应。<ul>
+                     <li><strong>初级光化学过程 (第6章):</strong> 核心在于$R^* \rightarrow I$的转变，即激发态分子如何断裂旧键或形成新键，生成中间体。这部分理论会用到<strong>态相关图</strong>。</li>
+                     <li><strong>能量与电子转移 (第7章):</strong> 探讨$R^*$参与的另一类重要反应，即分子间的能量或电子传递。</li>
+                     </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="infographic-section">
+            <div class="markdown-content">
+                <h2>旅程终点：光化学全景</h2>
+                <p>综合来看，整个光化学过程可以概括为一条清晰的路径，每个环节都对应着我们路线图中的一站。</p>
+            </div>
+            <div class="summary-flow">
+            $R$ <span>&nbsp;→&nbsp;</span> $R^*$ <span>&nbsp;→&nbsp;</span> $I$ <span>&nbsp;→&nbsp;</span> $P$
+            </div>
+        </section>
+
+        <footer>
+            <div class="markdown-content">
+            <p><strong>深入探索:</strong> 本次学习之旅的规划参考了相关领域的权威著作，这些著作引用了大量有用的信息来源 (参考文献 5-14)，为更深入的学习提供了指引。</p>
+            </div>
+            
+        </footer>
+    </div>
+
+    <script src="background.js" defer></script>
+</body>
+</html>

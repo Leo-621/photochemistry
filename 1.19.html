@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光化学的时间尺度：从飞秒到宇宙纪元</title>
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <style>
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: stretch;
+            gap: 20px;
+        }
+        .timeline-time {
+            flex-basis: 120px;
+            flex-shrink: 0;
+            text-align: right;
+            font-weight: bold;
+            color: var(--accent-color-1);
+            font-size: 1.1em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .timeline-content {
+            flex-grow: 1;
+            background: rgba(0,0,0,0.2);
+            border-left: 4px solid;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        .timeline-content h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+        .timeline-content p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        .color-fs { border-color: #ff4d4d; }
+        .color-ps { border-color: #ff9d4d; }
+        .color-ns { border-color: #ffff4d; }
+        .color-us { border-color: #4dff4d; }
+        .color-ms { border-color: #4dffff; }
+        .color-s { border-color: #4d9dff; }
+        .color-long { border-color: #9d4dff; }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="starfield-canvas"></canvas>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主页</a>
+        <header class="page-header">
+            <h1>光化学的时间尺度</h1>
+            <p>分子并非静止的“球棒模型”，而是在持续运动。从光子吸收的瞬间到化学反应的完成，每一个过程都在其特定的时间尺度上展开，这是一场跨越了20多个数量级的壮丽比赛。</p>
+        </header>
+
+        <section class="infographic-section">
+            <div class="markdown-content">
+## 1. 初始瞬间：光的吸收 (~$10^{-15}$ s)
+> 化学反应在空间中找到位置之前，时间就已经开始了。——艾哈迈德·泽维尔 (Ahmed Zewail, 1999年诺贝尔化学奖得主)
+
+光与分子的相互作用并非瞬时完成。光子以光速飞行，穿过一个分子也需要时间。这个极短的时间，为光化学的所有后续事件设定了不可逾越的速度上限。
+
+- **光子尺寸**: 一个波长为400nm的蓝光光子，可以认为其“长度”或作用范围约为400nm。
+- **穿越时间**: 光子穿过一个典型的有机生色团（尺寸约0.3 nm）所需的时间为：
+  $\tau = d/c = 0.3 \times 10^{-9} \text{m} / (3 \times 10^8 \text{m/s}) = 10^{-18} \text{s}$
+- **相互作用时间**: 考虑到光子的波动性，一个更实际的相互作用时间约为 $10^{-15}$ s (1 飞秒, fs)。
+- **意义**: 电子必须在这个飞秒级的时间窗口内完成从一个轨道到另一个轨道的跃迁。这是任何光化学或光物理事件的**绝对起点**。
+            </div>
+        </section>
+
+        <section class="infographic-section">
+            <div class="markdown-content">
+## 2. 时间之旅：从飞秒到永恒
+光的吸收打开了潘多拉魔盒，一系列眼花缭乱的事件在不同的时间尺度上接连发生。
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">飞秒 (fs)<br>$10^{-15}$ s</div>
+                    <div class="timeline-content color-fs"><h4>电子运动</h4><p>电子在轨道间跃迁，光子被吸收。</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">皮秒 (ps)<br>$10^{-12}$ s</div>
+                    <div class="timeline-content color-ps"><h4>分子振动 & 弱键断裂</h4><p>原子核开始振动（如C-H伸缩），能量在分子内重新分布。</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">纳秒 (ns)<br>$10^{-9}$ s</div>
+                    <div class="timeline-content color-ns"><h4>荧光 (快) & 转动</h4><p>分子从单重激发态($S_1$)发光，这是最快的发光过程。速率常数 $k_f \sim 10^9$ s$^{-1}$。</p></div>
+                </div>
+                 <div class="timeline-item">
+                    <div class="timeline-time">微秒 (μs)<br>$10^{-6}$ s</div>
+                    <div class="timeline-content color-us"><h4>荧光 (慢) & “超快”化学反应</h4><p>一些较慢的荧光过程和大多数单重态相关的光化学反应在此发生。速率常数 $k_f \sim 10^6$ s$^{-1}$。</p></div>
+                </div>
+                 <div class="timeline-item">
+                    <div class="timeline-time">毫秒 (ms)<br>$10^{-3}$ s</div>
+                    <div class="timeline-content color-ms"><h4>磷光 & “快速”化学反应</h4><p>分子从三重激发态($T_1$)发光，由于电子自旋禁阻，该过程慢得多。速率常数 $k_p \sim 10^3$ s$^{-1}$。</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">秒 (s)<br>$10^0$ s</div>
+                    <div class="timeline-content color-s"><h4>长寿命磷光</h4><p>一些分子的磷光寿命可达数秒甚至更长。速率常数 $k_p \sim 10^0 - 10^{-2}$ s$^{-1}$。</p></div>
+                </div>
+                 <div class="timeline-item">
+                    <div class="timeline-time">更长...<br>$> 10^6$ s</div>
+                    <div class="timeline-content color-long"><h4>宇宙尺度</h4><p>为了对比，人类的生命、文明史、乃至地球的年龄，也都是这个宏大时间尺度的一部分。</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="infographic-section">
+            <div class="markdown-content">
+## 3. 时间的法则：速度决定命运
+一个激发态分子（如处于$S_1$或$T_1$态）的出路不止一条，它会选择**速度最快**的那条路。任何光物理或光化学过程，都必须与所有其他可能的失活途径（统称为 $\Sigma k$）竞争。
+
+### 竞争法则
+一个过程能发生的条件是：它的速率 > 其他所有失活过程速率的总和。
+
+### 实例分析
+> 想象一下，一个分子处于荧光寿命为 $10^{-8}$ s 的 $S_1$ 态。
+> - 一个需要 $10^{-5}$ s 才能完成的无辐射跃迁过程，与荧光相比**太慢了**，几乎没有机会发生。
+> - 但如果分子通过系间窜越到达了寿命为 $10^{-3}$ s 的 $T_1$ 态，这个 $10^{-5}$ s 的过程就变得**非常快**，足以与缓慢的磷光竞争，成为主要失活途径。
+
+**结论：** 三重态寿命更长，为原本不可能发生的光化学反应提供了充足的时间和机会。这就是为什么许多光化学反应更倾向于从三重态发生的原因。
+            </div>
+        </section>
+
+        <footer>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const markdownElements = document.querySelectorAll('.markdown-content');
+            markdownElements.forEach(elem => {
+                // Use innerHTML to get the raw text content, including markdown characters
+                const markdownText = elem.innerHTML;
+                // Replace special HTML characters to prevent them from being parsed as HTML tags
+                const sanitizedText = markdownText.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                elem.innerHTML = marked.parse(sanitizedText.trim());
+            });
+            // Ensure MathJax runs after Markdown parsing
+            if (window.MathJax && window.MathJax.typeset) {
+                window.MathJax.typeset();
+            }
+        });
+    </script>
+    
+    <script src="background.js" defer></script>
+</body>
+</html>
